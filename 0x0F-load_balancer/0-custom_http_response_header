@@ -5,6 +5,16 @@ apt-get -y update
 apt-get -y install nginx
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
-sed -i "/listen 80 default_server/a add_header X-Served-By \"$HOSTNAME\";" /etc/nginx/sites-available/default
-sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://intranet.alxswe.com/ permanent;\n\n\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
+
+sed -i '/rewrite ^\/redirect_me https:\/\/intranet.alxswe.com\/ permanent;/d' /etc/nginx/sites-available/default
+sed -i '/add_header X-Server-By/d' /etc/nginx/sites-available/default
+sed -i '/error_page 404 \/404.html;/d' /etc/nginx/sites-available/default
+sed -i '/location = \/404.html {/d' /etc/nginx/sites-available/default
+sed -i '/root \/var\/www\/html;/d' /etc/nginx/sites-available/default
+sed -i '/internal;}/d' /etc/nginx/sites-available/default
+
+sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://intranet.alxswe.com/ permanent;' /etc/nginx/sites-available/default
+sed -i '/listen 80 default_server;/a error_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;}' /etc/nginx/sites-available/default
+sed -i "/listen 80 default_server;/a add_header X-Server-By \"$HOSTNAME\";"  /etc/nginx/sites-available/default
+
 service nginx start
