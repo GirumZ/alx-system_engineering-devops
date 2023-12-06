@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #A script that installs nginx on a remote server
 
 apt-get -y update
