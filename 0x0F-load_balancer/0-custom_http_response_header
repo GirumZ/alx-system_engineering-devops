@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-# A script that installs nginx on a remote server
+ script that installs nginx on a remote server
 
 apt-get -y update
 apt-get -y install nginx
@@ -12,9 +11,10 @@ sed -i '/error_page 404 \/404.html;/d' /etc/nginx/sites-available/default
 sed -i '/location = \/404.html {/d' /etc/nginx/sites-available/default
 sed -i '/root \/var\/www\/html;/d' /etc/nginx/sites-available/default
 sed -i '/internal;}/d' /etc/nginx/sites-available/default
+sed -i '/add_header X-Served-By/d' /etc/nginx/nginx.conf
 
 sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://intranet.alxswe.com/ permanent;' /etc/nginx/sites-available/default
 sed -i '/listen 80 default_server;/a error_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;}' /etc/nginx/sites-available/default
-sed -i "/listen 80 default_server;/a add_header X-Server-By \"$HOSTNAME\";"  /etc/nginx/sites-available/default
+sed -i "/http {/a       add_header X-Served-By \"$HOSTNAME\";"  /etc/nginx/nginx.conf
 
 service nginx start
