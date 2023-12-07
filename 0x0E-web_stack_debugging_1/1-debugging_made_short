@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# A script that fixs a nginx server and stops the service
+sed -i -e 's/8080/80/g' /etc/nginx/sites-enabled/default
+service nginx stop
