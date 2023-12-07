@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # A script that fixs a nginx server
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/default /etc/sites-enabled/default
+apt -y update
+apt -y install nginx
+service nginx start
+sed -i -e 's/22/80/g' /etc/nginx/sites-enabled/default
 service nginx restart
