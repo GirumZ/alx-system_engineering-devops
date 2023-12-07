@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # A script that fixs a nginx server
-sed -i -e 's/8080/80/g' /etc/nginx/sites-available/default
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/sites-enabled/default
 service nginx restart
