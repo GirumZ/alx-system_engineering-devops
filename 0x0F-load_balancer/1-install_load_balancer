@@ -6,16 +6,18 @@ add-apt-repository -y ppa:vbernat/haproxy-2.0
 apt-get -y update
 apt-get -y install haproxy=2.0.\*
 
-cat >> /etc/haproxy/haproxy.cfg << EOF
+if ! grep -q "backend web-backend" /etc/haproxy/haproxy.cfg; then
+	cat >> /etc/haproxy/haproxy.cfg << EOF
 
 backend web-backend
-	balance roundrobin
-	server 224883-web-01 57.87.230.89:80 check
-	server 224883-web-02 18.204.16.117:80 check
+        balance roundrobin
+        server 224883-web-01 52.87.230.89:80 check
+        server 224883-web-02 18.204.16.117:80 check
 
 frontend web-frontend
-	bind *:80
-	mode http
-	default_backend web-backend
+        bind *:80
+        mode http
+        default_backend web-backend
 EOF
+fi
 service haproxy restart
