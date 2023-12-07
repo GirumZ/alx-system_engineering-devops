@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# A script that fixs a nginx server
+# configures nginx to listen to port 80
 apt -y update
 apt -y install nginx
 service nginx start
