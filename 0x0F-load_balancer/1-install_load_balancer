@@ -11,8 +11,8 @@ if ! grep -q "backend web-backend" /etc/haproxy/haproxy.cfg; then
 
 backend web-backend
         balance roundrobin
-        server 224883-web-01 52.87.230.89:80 check
-        server 224883-web-02 18.204.16.117:80 check
+        server 224883-web-01 52.91.146.125:80 check
+        server 224883-web-02 54.165.149.76:80 check
 
 frontend web-frontend
         bind *:80
