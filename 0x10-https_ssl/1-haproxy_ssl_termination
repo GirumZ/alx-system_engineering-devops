@@ -40,7 +40,7 @@ backend web-backend
 
 frontend web-frontend
         bind *:80
-        bind *:443 ssl crt /etc/letsencrypt/live/www.girumtesfaye.tech/fullchain.pem
+        bind *:443 ssl crt /etc/haproxy/certs/www.girumtesfaye.tech.pem
         redirect scheme https code 301 if !{ ssl_fc }
         mode http
         default_backend web-backend
