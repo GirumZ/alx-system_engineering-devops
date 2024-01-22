@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# bash script to config ports
+
+sudo ufw default deny incoming
+sudo uft allow ssh
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw enable
