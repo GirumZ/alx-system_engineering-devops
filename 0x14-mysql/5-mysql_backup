@@ -1,4 +1,4 @@
-#!usr/bin/unv bash
+#!usr/bin/env bash
 # bash script to backup a mysql server
 
 mysqldump --all-databases -u root -p"$1" > backup.sql
