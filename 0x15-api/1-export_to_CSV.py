@@ -36,6 +36,6 @@ if __name__ == '__main__':
         t_title = task.get('title')
         data_row = [usr_id, username, is_comp, t_title]
         data.append(data_row)
-    with open('USER_ID.csv', "w") as csvfile:
+    with open(f"{usr_id}.csv", "w") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         writer.writerows(data)
