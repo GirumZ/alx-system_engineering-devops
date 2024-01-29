@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-""" A script that uses REST API to display task details from todo list"""
+"""
+Fetch data tasks by  user id and display
+completed/all tasks and the user's name.
+Usage:
+    python3 file.py <userId>
+"""
 
 import requests
 import sys
