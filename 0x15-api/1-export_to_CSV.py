@@ -19,6 +19,7 @@ if __name__ == '__main__':
     result_1 = response_1.json()
 
     usr_name = result_1.get('name')
+    username = result_1.get('username')
 
     # find the url that links to the todos page of a given userId
     todos_url = "{}/todos?userId={}".format(base_url, usr_id)
@@ -33,7 +34,7 @@ if __name__ == '__main__':
         data_row = []
         is_comp = task.get('completed')
         t_title = task.get('title')
-        data_row = [usr_id, usr_name, is_comp, t_title]
+        data_row = [usr_id, username, is_comp, t_title]
         data.append(data_row)
     with open('USER_ID.csv', "w") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
