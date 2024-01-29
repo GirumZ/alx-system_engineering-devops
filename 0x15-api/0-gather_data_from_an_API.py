@@ -13,7 +13,7 @@ if __name__ == '__main__':
     user_url = "{}users/{}".format(base_url, usr_id)
     response_1 = requests.get(user_url)
 
-    # 'result' will be a dictionary containing the detailes of a user with usr_id
+    # 'result' will be a dictionary containing the detailes of a user with id
     result_1 = response_1.json()
 
     usr_name = result_1.get('name')
@@ -27,12 +27,12 @@ if __name__ == '__main__':
     # 'completed' will be list of completed tasks
     completed = []
     for task in result_2:
-        if task.get('completed') == True:
+        if task.get('completed') is True:
             completed.append(task.get('title'))
     # Number of completed and total tasks
     c_t = len(completed)
     t_t = len(result_2)
 
-    print ("Employee {} is done with tasks({}/{}):".format(usr_name, c_t, t_t))
+    print("Employee {} is done with tasks({}/{}):".format(usr_name, c_t, t_t))
     for item in completed:
         print("\t {}".format(item))
