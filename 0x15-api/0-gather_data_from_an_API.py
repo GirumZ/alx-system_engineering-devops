@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" A script that uses REST API to display task details from todo list"""
 
 import requests
 import sys
