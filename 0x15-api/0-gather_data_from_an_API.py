@@ -1,10 +1,5 @@
 #!/usr/bin/python3
-"""
-Fetch data tasks by  user id and display
-completed/all tasks and the user's name.
-Usage:
-    python3 file.py <userId>
-"""
+"""A python script that uses REST API to access the todos of a user"""
 
 import requests
 import sys
